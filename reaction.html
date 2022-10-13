@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>reactiontimer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Reaction Timer chandugoud khammampati</h1>
+
+<div class="d-flex flex-column align-items-left  border-light bd-highlight">
+    <div class="col-md-12 text-align:center" style="background-color:aqua;">
+        <div id="target" style="color:red">Your time</div>
+    </div>
+    <div class="col-md-12 text-align:center" style="background-color:aqua;">
+        <div id="countdown" style="color:black">Count</div>
+    </div>
+</div>
+<br>
+<div class="container-fluid text-center text-align: align-items-center">
+    <button type="button" class="btn btn-secondary" onclick="startTime()">Start Timer</button>
+    <button type="button" class="btn btn-info" onclick="recordReact()"> React Now </button>
+</div>
+<script>
+    var myTime;
+    function recordReact() {
+        myTime = Date.now();
+        console.log(myTime);
+    }
+
+    function startTime() {
+
+        const  countDown = Math.random() * 9;
+        let final_countdown_value = Math.floor(countDown) + 2;
+        console.log(final_countdown_value);
+        console.log();
+
+        for (let val = 0; val < final_countdown_value; val++) {
+            setTimeout(() => {
+                document.getElementById("countdown").innerHTML = val;},(3 - val) * 1000);
+        }
+        setTimeout(() => {
+            if (myTime==undefined) {
+                document.getElementById("target").innerHTML = "Too Slow";
+            }
+            else {
+                var buttonTime = Date.now();
+                elapsed_time = buttonTime - myTime;
+                document.getElementById("target").innerHTML = "Time was: " + elapsed_time;
+            }
+        }, 3000);
+    }
+</script>
+</body>
+</html>
